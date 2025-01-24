@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(120deg, #84a9ac, #3b6978);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Button Styling */
+.btn-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-order:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.btn-order:active {
+    transform: scale(0.95);
+}
+
+/* Icon and Text */
+.icon {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.text {
+    transition: opacity 0.3s ease;
+}
+
+/* Processing Animation */
+.btn-order.processing .icon {
+    transform: rotate(360deg);
+}
+
+.btn-order.processing .text {
+    opacity: 0.5;
+}
+
+/* Success State */
+.btn-order.success {
+    background: #28a745;
+}
+
+.btn-order.success .icon {
+    transform: scale(1.5);
+    color: #fff;
+}
+
+.btn-order.success .text {
+    font-weight: bold;
+}

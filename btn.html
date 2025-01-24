@@ -3,32 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Animated Button with Success Icon</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
-<style>
-    body {
-
-min-height: 100vh;
-overflow: hidden;
-display: flex;
-font-family: "Inter UI","Inter","Arial";
-justify-content: center;
-align-items: center;
-background: #ECEFFC;
-}
-
-
-.truck-button {
-     padding: 12px 0; 
-    width: 172px;
-cursor: pointer
-}
-</style>
 <body>
-    
+    <main>
+        <button class="btn-order" id="orderButton">
+            <span class="icon default">🛒</span>
+            <span class="text">Order Now</span>
+        </button>
+    </main>
 
-    <div class="slider"><button style="padding: 10px;">
-        complete order  
-            </button></div>
+    <script>
+        const button = document.getElementById('orderButton');
+        button.addEventListener('click', () => {
+            const icon = button.querySelector('.icon');
+            const text = button.querySelector('.text');
+
+            // Add animation classes
+            button.classList.add('processing');
+            text.textContent = 'Processing...';
+
+            // Simulate processing
+            setTimeout(() => {
+                icon.textContent = '✔️'; // Change to success icon
+                text.textContent = 'Success!';
+                button.classList.remove('processing');
+                button.classList.add('success');
+            }, 2000);
+        });
+    </script>
 </body>
 </html>

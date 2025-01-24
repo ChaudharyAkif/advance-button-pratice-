@@ -1,91 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra-Modern Animated Button</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<style>
 
-  <style>
-    body {
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* font-family: "Inter", Arial;
-      background: #E1E6f9; */
-    }
-    /* .button {
-      --primary: #275EFE;
-      --primary-dark: #2055EE;
-      --primary-darkest: #133FC0;
-      --text: #ffffff;
-      --text-opacity: 1;
-      --success: #2B3044;
-      --success-scale: .2;
-      --success-opacity: 0;
-      --success-opacity: 0;
-      --border-radius: 7;
-      --overflow: hidden;
-      --rotate: 0;
-      --plane-x: 0;
-      --plane-y: 0;
-      --plane-opacity: 1;
-      --left-wing-background: var(--primary);
-      --left-wing-first-x: 0;
-      --left-wing-first-y: 0;
-      --left-wing-second-x: 50;
-      --left-wing-second-y: 0;
-      --left-wing-third-x: 0;
-      --left-wing-third-y: 100;
-      --left-body-background: var(--primary);
-      --left-body-first-x: 50;
-      --left-body-first-y: 0;
-      --left-body-second-x: 50;
-      --left-body-second-y: 100;
-      --left-body-third-x: 0;
-      --left-body-third-x: 100; 
-      --right-wing-background: var(--primary);
 
-      --right-wing-first-x: 50;
-      --right-wing-first-y: 0;
-      --right-wing-second-x: 100;
-      --right-wing-second-y: 0;
-      --right-wing-third-x: 100;
-      --right-wing-third-y: 100;
-      --right-body-background: var(--primary);
-      --right-body-first-x: 50;
-      --right-body-first-y: 0;
-      --right-body-second-x: 50;
-      --right-body-second-y: 100;
-      --right-body-third-x: 100;
-      --right-body-third-x: 100;
 
-      display: block;
-      cursor: pointer;
-      position: relative;
-      border: 0;
-      padding: 8px 0;
-      min-width: 100px;
-      text-align: center;
-      margin: 0;
-      line-height: 24px;
-      font-family: inherit;
-      font-weight: 500;
-      font-size: 14px;
-      background: none;
-      outline: none;
-      color: var(--text);
-      transform: rotate(calc(var(--rotate) * 1deg)) translateZ(0);
-      --webkit-appearance: none;
-      --webkit-tap-highlight-color: transparent;  */
-    /* } */
 
-  </style>
-  <body>
-    <div class="button">
-      <button class="button">Submit</button>
-    </div>
-  </body>
+/* Modern Button Styling */
+.btn-modern {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #6c63ff;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-modern:hover {
+    background: #5b55e4;
+    transform: scale(1.05);
+}
+
+.btn-modern:active {
+    transform: scale(0.95);
+}
+
+/* Progress Circle */
+.progress-circle {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 2.8;
+}
+
+.circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+/* Button Text */
+.btn-text {
+    margin-left: 60px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Success State */
+.btn-modern.success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-modern.success .btn-text {
+    font-weight: bold;
+}
+
+.check-icon {
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+}
+
+</style>
+<body>
+    <main>
+        <button class="btn-modern" id="animatedButton">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path
+                    class="circle-bg"
+                    d="M18 2.0845
+                       a 15.9155 15.9155 0 1 1 0 31.831
+                       a 15.9155 15.9155 0 1 1 0 -31.831"
+                />
+                <path
+                    class="circle"
+                    stroke-dasharray="0, 100"
+                    d="M18 2.0845
+                       a 15.9155 15.9155 0 1 1 0 31.831
+                       a 15.9155 15.9155 0 1 1 0 -31.831"
+                />
+            </svg>
+            <span class="btn-text">Place Order</span>
+            <span class="check-icon">✔</span>
+        </button>
+    </main>
+
+    <script>
+        const button = document.getElementById("animatedButton");
+
+        button.addEventListener("click", () => {
+            const circle = button.querySelector(".circle");
+            const text = button.querySelector(".btn-text");
+            const checkIcon = button.querySelector(".check-icon");
+
+            // Reset states
+            button.classList.remove("success");
+            text.textContent = "Processing...";
+            checkIcon.style.opacity = "0";
+
+            // Animate progress circle
+            anime({
+                targets: circle,
+                strokeDasharray: ["0, 100", "100, 100"],
+                easing: "easeInOutCubic",
+                duration: 2000,
+                complete: () => {
+                    // On complete, show success
+                    button.classList.add("success");
+                    text.textContent = "Success!";
+                    checkIcon.style.opacity = "1";
+                },
+            });
+        });
+    </script>
+</body>
 </html>
